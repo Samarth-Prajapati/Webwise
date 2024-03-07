@@ -119,7 +119,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0 10px 30px;
+  padding: 20px 15px 10px 15px;
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -142,6 +142,25 @@ section {
   color: #4154f1;
 }
 
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 7px;
+  width: 100%;
+  height: 3px;
+  background: #013289;
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+
+.navbar a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
 .navbar .getstarted,
 .navbar .getstarted:focus {
   background: #4154f1;
@@ -155,72 +174,6 @@ section {
 .navbar .getstarted:focus:hover {
   color: #fff;
   background: #5969f3;
-}
-
-.navbar .dropdown ul {
-  display: block;
-  position: absolute;
-  left: 14px;
-  top: calc(100% + 30px);
-  margin: 0;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  transition: 0.3s;
-  border-radius: 4px;
-}
-
-.navbar .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar .dropdown ul a {
-  padding: 10px 20px;
-  font-size: 15px;
-  text-transform: none;
-  font-weight: 600;
-}
-
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar .dropdown ul a:hover,
-.navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
-  color: #4154f1;
-}
-
-.navbar .dropdown:hover>ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
-}
-
-.navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-}
-
-.navbar .dropdown .dropdown:hover>ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
-
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
 }
 
 .mobile-nav-toggle {
@@ -293,40 +246,6 @@ section {
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
   margin: 15px;
-}
-
-.navbar-mobile .dropdown ul {
-  position: static;
-  display: none;
-  margin: 10px 20px;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 1;
-  visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-}
-
-.navbar-mobile .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar-mobile .dropdown ul a {
-  padding: 10px 20px;
-}
-
-.navbar-mobile .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar-mobile .dropdown ul a:hover,
-.navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
-  color: #4154f1;
-}
-
-.navbar-mobile .dropdown>.dropdown-active {
-  display: block;
 }
 
 .hero {
@@ -1667,6 +1586,211 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+/* 
+.wrapper {
+  position: absolute;
+  width: 400px;
+  height: 440px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform .5s ease, height .2s ease;
+  transform: scale(0);
+}
+
+.wrapper.active-popup {
+  transform: scale(1)
+}
+
+.wrapper .form-box.login {
+  transition: transform .18s ease;
+  transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+  transition: none;
+  transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+  position: absolute;
+  transition: none;
+  transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+  transition: transform .18s ease;
+  transform: translateX(0);
+}
+
+.wrapper.active {
+  height: 520px;
+}
+
+.wrapper .form-box.register {
+  position: absolute;
+  transform: translateX(400px);
+}
+
+.wrapper .icon-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: #012970;
+  font-size: 2em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 40px;
+
+}
+
+.form-box h2 {
+  font-size: 2em;
+  color: #012970;
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #012970;
+  margin: 30px 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #012970;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #012970;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  color: #012970;
+  line-height: 57px;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+  top: -5px;
+}
+
+.remember-forgot {
+  font-size: .9em;
+  font-weight: 500;
+  color: #012970;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input {
+  accent-color: #012970;
+  margin-right: 3px;
+}
+
+.remember-forgot a {
+  color: #012970;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.loginbutt {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  background-color: #012970;
+  font-weight: 500;
+}
+
+.login-register {
+
+  font-size: .9em;
+  color: #012970;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+
+}
+
+.login-register p a {
+  color: #012970;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-register p a:hover {
+  text-decoration: underline;
+}
+
+
+.navbar .btnLogin-popup {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #013289;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 40px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #013289;
+
+}
+
+.navbar .btnLogin-popup:hover {
+  background-color: #4154f1;
+  color: #fff;
+  border: none;
+} */
 
 .info-box1 {
   color: #444444;
