@@ -1,7 +1,3 @@
-:root {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -29,6 +25,10 @@ h6 {
 section {
   padding: 60px 0;
   overflow: hidden;
+}
+
+:root {
+  scroll-behavior: smooth;
 }
 
 .section-header {
@@ -1469,7 +1469,7 @@ section {
   font-size: 20px;
 }
 
-/* 
+
 .sub {
   background: #4154f1;
   width: 220px;
@@ -1486,7 +1486,7 @@ section {
 .sub:hover {
   background: #6776f4;
   color: white;
-} */
+}
 
 .back-to-top1 {
   position: fixed;

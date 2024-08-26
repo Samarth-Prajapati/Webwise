@@ -2,7 +2,7 @@ var preloader = document.querySelector('.loading-preloader');
 if (preloader) {
   setTimeout(function () {
     preloader.classList.add('d-none');
-  }, 3000);
+  }, 2000);
 }
 (function () {
   "use strict";
